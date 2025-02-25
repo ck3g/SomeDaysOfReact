@@ -1,18 +1,6 @@
-import reactImage from './assets/react-core-concepts.png';
 import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header.jsx'
-
-function CoreConcept(props) {
-  const { title, description, image } = props;
-
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
+import CoreConcept from './components/CoreConcept.jsx'
 
 function App() {
   return (
