@@ -1,3 +1,5 @@
+import './CoreConcept.css';
+
 export default function CoreConcept(props) {
   const { title, description, image } = props;
 
