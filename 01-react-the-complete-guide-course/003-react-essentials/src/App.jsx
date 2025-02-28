@@ -1,11 +1,17 @@
+import { useState } from 'react';
+
 import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
+  // useState should be called inside components and not nested into some other if conditions etc.
+  // it always returns an array of two elements
+  const [selectedTopic, setSelectedTopic] = useState('Please click a button');
+
   function handleSelect(selectedButton) {
-    console.log("Hello world - selected ", selectedButton);
+    setSelectedTopic(selectedButton);
   }
 
   return (
@@ -33,6 +39,7 @@ function App() {
             <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
+          {selectedTopic}
         </section>
       </main>
     </div>
