@@ -4,7 +4,18 @@ export default function Player({ name, symbol }) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
-    setIsEditing(!isEditing);
+    // Proper way in React to toggle the value
+    // That because React is scheduling state update with the value of the current moment
+    // For example, one might think that will will togge value twice:
+    //
+    // setIsEditing(!isEditing); // => true
+    // setIsEditing(!isEditing); // => false
+    //
+    // but instead, it will schedule `setIsEditing` with the `false` value of `isEditing` twice:
+    // setIsEditing(!isEditing); // => true
+    // setIsEditing(!isEditing); // => true
+    //
+    setIsEditing((wasEditing) => !wasEditing);
   }
 
   let playerName = <span className="player-name">{name}</span>
