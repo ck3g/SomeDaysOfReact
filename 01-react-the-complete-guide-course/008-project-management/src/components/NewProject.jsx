@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import Input from './Input.jsx';
 import Modal from './Modal.jsx';
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const modal = useRef();
   const title = useRef();
   const description = useRef();
@@ -38,6 +38,7 @@ export default function NewProject({ onAdd }) {
           <li>
             <button
               className="text-stone-800 hover:text-stone-950"
+              onClick={onCancel}
             >
               Cancel
             </button>
