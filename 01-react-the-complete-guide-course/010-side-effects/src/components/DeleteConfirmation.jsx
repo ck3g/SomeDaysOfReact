@@ -9,7 +9,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
     return () => { // clean up function, it called before effect used again, or the component dismounts
       clearTimeout(timer);
     }
-  }, [])
+  }, [onConfirm])
 
   return (
     <div id="delete-confirmation">
