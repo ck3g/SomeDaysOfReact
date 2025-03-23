@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import quizComplete from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions.js';
 
 export default function Quiz() {
@@ -8,14 +9,23 @@ export default function Quiz() {
   // because we want to use as little state as possible
   // and derive as much state as possible
   const activeQuestionIndex = userAnswers.length;
-  const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
-  shuffledAnswers.sort(() => Math.random() - 0.5);
+  const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   function handleSelectAnswer(selectedAnswer) {
     setUserAnswers((prevAnswers) => {
       return [...prevAnswers, selectedAnswer];
     });
   }
+
+  if (quizIsComplete) {
+    return <div id="summary">
+      <img src={quizComplete} alt="Trophy icon" />
+      <h2>Quiz Completed</h2>
+    </div>
+  }
+
+  const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
+  shuffledAnswers.sort(() => Math.random() - 0.5);
 
   return <div id="quiz">
     <div id="question">
