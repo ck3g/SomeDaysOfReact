@@ -12,6 +12,12 @@ class Users extends Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error("No users provided")
+    }
+  }
+
   toggleUsersHandler() {
     // merges the state, instead of overriding it
     // only updates specified values, and keeps all other existing ones
