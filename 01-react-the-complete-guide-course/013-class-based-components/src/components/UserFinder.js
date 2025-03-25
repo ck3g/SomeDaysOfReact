@@ -14,9 +14,14 @@ class UserFinder extends Component {
     super();
 
     this.state = {
-      filteredUsers: DUMMY_USERS,
+      filteredUsers: [],
       searchTerm: ''
     }
+  }
+
+  componentDidMount() {
+    // Assuming users are loaded from API, so load them here once
+    this.setState({ filteredUsers: DUMMY_USERS })
   }
 
   componentDidUpdate(_prevProps, prevState) {
